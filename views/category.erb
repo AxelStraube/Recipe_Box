@@ -1,0 +1,30 @@
+<h1><%= @category.name %></h1>
+
+<% if @recipes.any? %>
+  <% @recipes.each do |recipe| %>
+  <ul>
+    <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You haven't added any recipes for this category yet!</p>
+<% end %>
+
+
+<!-- <form action="/recipes" method="post"
+<input id="category_id" name="category_id" type="hidden" value="<%= @category.id() %>">
+<label for="name">Enter Recipe Name:</label>
+<input id="name" name="name" type="text">
+
+<button type="submit">Add Recipe</button>
+</form> -->
+
+
+<!-- <form action="/recipes/new" method="get">
+  <input name="category_id" type="hidden" value=<%= @category.id %> >
+  <button type="submit">Add a new recipe</button>
+</form> -->
+
+<p><a href="/categories/:id/recipes/new">Add a new recipe</a></p>
+
+<p><a href="/">Home</a></p>

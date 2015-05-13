@@ -1,0 +1,9 @@
+<form action="/recipes" method="post">
+  <input id="category_id" name="category_id" type="hidden" value="<%= @category.id() %>">
+  <label for="name">Enter Recipe Name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Recipe</button>
+</form>
+
+<a href="/">Home</a>
