@@ -66,3 +66,10 @@ post ('/ingredients/new') do
   @all_ingredients = Ingredient.all()
   erb(:ingredient_form)
 end
+
+delete ('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch("id").to_i())
+  @recipe.delete
+  @all_categories = Category.all
+  erb(:index)
+end
