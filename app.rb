@@ -30,16 +30,14 @@ get ('/categories/:id') do
   erb(:category)
 end
 
-get ('/categories/:id/recipes/new') do
-#  @category = Category.find(params.fetch("id").to_i())
-  erb(:recipe_form)
-end
-
 post ('/recipes') do
   name = params.fetch("name")
-  new_recipe = Recipe.create({:name => name})
-  @category = Category.find(params.fetch("id").to_i())
+  instructions = params.fetch("instructions")
+  new_recipe = Recipe.create({:name => name, :instructions => instructions})
+  category_id = params.fetch("category_id").to_i()
+  @category = Category.find(category_id)
+  @category.recipes.push(new_recipe)
   # @category = Category.find('category_id').to_i()
-  # @recipes = @category.recipes
+  @recipes = @category.recipes
   erb(:category)
 end
