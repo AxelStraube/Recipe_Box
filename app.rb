@@ -27,6 +27,7 @@ end
 get ('/categories/:id') do
   @category = Category.find(params.fetch("id").to_i())
   @recipes = @category.recipes
+  @all_ingredients = Ingredient.all()
   erb(:category)
 end
 
@@ -37,7 +38,23 @@ post ('/recipes') do
   category_id = params.fetch("category_id").to_i()
   @category = Category.find(category_id)
   @category.recipes.push(new_recipe)
-  # @category = Category.find('category_id').to_i()
   @recipes = @category.recipes
   erb(:category)
+end
+
+get ('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch("id").to_i())
+  erb(:recipe)
+end
+
+get ('/ingredients/new') do
+  @all_ingredients = Ingredient.all()
+  erb(:ingredient_form)
+end
+
+post ('/ingredients/new') do
+  name = params.fetch("name")
+  ingredient = Ingredient.create({:name => name})
+  @all_ingredients = Ingredient.all()
+  erb(:ingredient_form)
 end

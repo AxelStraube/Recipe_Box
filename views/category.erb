@@ -10,6 +10,7 @@
   <p>You haven't added any recipes for this category yet!</p>
 <% end %>
 
+<h3>Add a new recipe</h3>
 
 <form action="/recipes" method="post">
   <input id="category_id" name="category_id" type="hidden" value=<%= @category.id() %> >
@@ -21,16 +22,18 @@
     <textarea placeholder = "Recipe Instructions" name="instructions" id="instructions"  class="instructions form-control"></textarea>
   </div>
 
+
+  <% @all_ingredients.each do |ingredient| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="ingredient_id[]" value="<%= ingredient.id() %>"><%= ingredient.name() %>
+      </label>
+    </div>
+  <% end %>
+
   <button type="submit">Add Recipe</button>
 </form>
 
-
-
-<!-- <form action="/recipes/new" method="get">
-  <input name="category_id" type="hidden" value=<%= @category.id %> >
-  <button type="submit">Add a new recipe</button>
-</form> -->
-
-
+<br>
 
 <p><a href="/">Home</a></p>

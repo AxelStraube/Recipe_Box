@@ -1,0 +1,18 @@
+<h1>Add your favorite ingredients</h1>
+
+<form action="/ingredients/new" method="post">
+  <label for="name">Enter your ingredient: </label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add ingredient</button>
+</form>
+
+<br>
+
+<ul>
+  <% @all_ingredients.each do |ingredient| %>
+    <li><%= ingredient.name() %></li>
+  <% end %>
+</ul>
+
+<a href="/">Home</a>
