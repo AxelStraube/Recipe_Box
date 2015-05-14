@@ -12,10 +12,15 @@
 
 <h3>Add a new recipe</h3>
 
+
+
 <form action="/recipes" method="post">
+
   <input id="category_id" name="category_id" type="hidden" value=<%= @category.id() %> >
-  <label for="name">Enter Recipe Name:</label>
-  <input id="name" name="name" type="text">
+  <input placeholder="Recipe Name" id="name" name="name" type="text" class="form-control">
+
+
+<br>
 
 
   <div class="form-group">
@@ -33,7 +38,3 @@
 
   <button type="submit">Add Recipe</button>
 </form>
-
-<br>
-
-<p><a href="/">Home</a></p>

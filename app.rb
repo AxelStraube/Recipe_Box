@@ -35,12 +35,13 @@ post ('/recipes') do
   name = params.fetch("name")
   instructions = params.fetch("instructions")
   new_recipe = Recipe.create({:name => name, :instructions => instructions})
+
   ingredient_id = params.fetch("ingredient_id")
-  ingredient_id = ingredient_id.first.to_i()
-  ingredient = Ingredient.find(ingredient_id)
-  # ingredient_id = ingredient_id.first.to_i()
-  # ingredient = Ingredient.find(params.fetch(ingredient_id))
-  new_recipe.ingredients.push(ingredient)
+  ingredient_id.each do |ingredient_id|
+    ingredient_name = Ingredient.find(ingredient_id)
+    new_recipe.ingredients.push(ingredient_name)
+  end
+
   @all_ingredients = Ingredient.all()
   category_id = params.fetch("category_id").to_i()
   @category = Category.find(category_id)
